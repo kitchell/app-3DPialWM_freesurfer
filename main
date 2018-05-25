@@ -16,7 +16,7 @@ time singularity exec -e docker://brainlife/freesurfer:6.0.0 bash -c "echo $FREE
 
 count=$(ls surfaces/* | wc -l)
 
-if [ "$count" == 4 ] 
+if [ "$count" == 8 ] 
 then
 	echo 0 > finished
 else
