@@ -2,6 +2,48 @@
 [![Run on Brainlife.io](https://img.shields.io/badge/Brainlife-bl.app.38-blue.svg)](https://doi.org/10.25663/bl.app.38)
 
 # app-example-documentation
+
+<!-- brainlife-app:begin (generated from the App manifest; edit the manifest, not this block) -->
+
+> **Converts FreeSurfer pial, white, smoothwm and inflated surfaces of both hemispheres to VTK, STL, GIFTI or MGZ meshes with mris_convert.**
+
+Utility that runs FreeSurfer mris_convert on the eight lh/rh pial, white, smoothwm and inflated surfaces of a FreeSurfer subject and writes them in the chosen file format. Use it to get cortical surface meshes for visualisation or for tools that do not read FreeSurfer surface files. Needs a complete FreeSurfer output; the App fails if any of the eight surfaces is not produced.
+
+| | |
+|---|---|
+| 📥 **Inputs** | `neuro/freesurfer` |
+| 📤 **Outputs** | `neuro/3Dsurfaces` |
+| 🐳 **Container** | `brainlife/freesurfer_on_mcr:6.0.2` |
+| ⚙️ **Resources** | 8 CPUs · 0.17 h walltime |
+| 🔑 **Requires** | `FREESURFER_LICENSE` |
+| 🔗 **Run it** | [doi.org/10.25663/bl.app.38](https://doi.org/10.25663/bl.app.38) |
+
+#### 📥 Inputs
+
+| Input | Datatype | Required | Description |
+|---|---|---|---|
+| `freesurfer` | `neuro/freesurfer` | yes | FreeSurfer recon-all subject directory. Must contain surf/lh\|rh.pial, .white, .smoothwm and .inflated. |
+
+#### 📤 Outputs
+
+| Output | Datatype | Description |
+|---|---|---|
+| `surfaces` | `neuro/3Dsurfaces` | Folder with eight meshes: lh/rh.pial, lh/rh.white, lh/rh.smoothwm and lh/rh.inflated in the chosen format. |
+
+<details>
+<summary><b>⚙️ Parameters</b> (1)</summary>
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `filetype` | enum | `vtk` | Output file format (extension) for the converted surfaces: vtk, stl, gii or mgz. Options: `vtk`, `stl`, `gii`, `mgz`. |
+
+</details>
+
+📚 **References used by this App:**
+- Avesani P. et al. The open diffusion data derivatives, brain data upcycling via integrated publishing of derivatives and reproducible open cloud services. Sci Data 6, 69 (2019). [doi:10.1038/s41597-019-0073-y](https://doi.org/10.1038/s41597-019-0073-y)
+
+<!-- brainlife-app:end -->
+
 This application converts Freesurfer's pial and white matter surfaces to different file types. It will convert the lh/rh.pial, lh/rh.white, lh/rh.smoothwm, lh/rh.inflated files into your choice of file type (stl, vtk, gii, mgz).
 
 ### Author
